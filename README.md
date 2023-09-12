@@ -106,9 +106,11 @@ Index(['hotel', 'is_canceled', 'lead_time', 'arrival_date_year',
        'required_car_parking_spaces', 'total_of_special_requests',
        'reservation_status', 'reservation_status_date'],
       dtype='object')
-[ ]
+```
 # Dataset Info
 hotel_booking_df.info()
+```
+
 <class 'pandas.core.frame.DataFrame'>
 RangeIndex: 119390 entries, 0 to 119389
 Data columns (total 32 columns):
@@ -148,7 +150,8 @@ Data columns (total 32 columns):
  31  reservation_status_date         119390 non-null  object 
 dtypes: float64(4), int64(16), object(12)
 memory usage: 29.1+ MB
-[ ]
+
+```
 # Dataset Duplicate Value Count, to remove these values, we use function drop.duplicate to delete duplicate rows.
 hotel_booking_df.drop_duplicates(inplace = True)
 
@@ -156,22 +159,29 @@ hotel_booking_df.drop_duplicates(inplace = True)
 uni_num_of_rows = hotel_booking_df.shape[0]
 
 uni_num_of_rows # now unique rows = 87396
-87396
-[ ]
-hotel_booking_df.reset_index() #View unique data
+```
 
-Missing Values/Null Values
-[ ]
+87396
+
+```
+hotel_booking_df.reset_index() #View unique data
+```
+# Missing Values/Null Values
+
+```
 # Missing Values/Null Values Count
 null_value = hotel_booking_df.isnull() == True
 hotel_booking_df.fillna(np.nan, inplace = True)
 
 hotel_booking_df # we replace all the null value as NaN.
+```
 
-[ ]
+```
 # Visualizing the missing values
 miss_values =hotel_booking_df.isnull().sum().sort_values(ascending=False)
 miss_values # We have check the count of null value in individual columns
+```
+
 company                           82137
 agent                             12193
 country                             452
@@ -205,14 +215,18 @@ arrival_date_year                     0
 lead_time                             0
 reservation_status_date               0
 dtype: int64
-What did you know about your dataset?
+
+# What did you know about your dataset?
 A single file in this data collection analyses different booking details between two hotels: a city hotel and a resort hotel. includes details like the date the reservation was made, the number of people staying, the number of adults, kids, and/or babies, and the number of parking spaces available, among other things. There are 32 columns and 119390 rows in the entire dataset. Dataset contains duplicate items, such as 31944, which is later removed.Every column in this dataset has a data type, such as an integer, a float, or a text. We note that some of these data types are inaccurate and eliminate those columns afterward.We calculate the distinct value for each column, which represents the actual values for each column.
 
-2. Understanding Your Variables
-[ ]
+# 2. Understanding Your Variables
+
+```
 # Dataset Columns
 df_column = hotel_booking_df.columns
 df_column
+```
+
 Index(['hotel', 'is_canceled', 'lead_time', 'arrival_date_year',
        'arrival_date_month', 'arrival_date_week_number',
        'arrival_date_day_of_month', 'stays_in_weekend_nights',
@@ -225,83 +239,88 @@ Index(['hotel', 'is_canceled', 'lead_time', 'arrival_date_year',
        'required_car_parking_spaces', 'total_of_special_requests',
        'reservation_status', 'reservation_status_date'],
       dtype='object')
-[ ]
+
+```
 # Dataset Describe
 hotel_booking_df.describe()
+```
 
-Variables Description
-Description of individual Variable
+# Variables Description
+# Description of individual Variable
 
 The columns and the data it represents are listed below:
 
-hotel : Name of the hotel (Resort Hotel or City Hotel)
+**hotel** : Name of the hotel (Resort Hotel or City Hotel)
 
-is_canceled : If the booking was canceled (1) or not (0)
+**is_canceled** : If the booking was canceled (1) or not (0)
 
-lead_time: Number of days before the actual arrival of the guests
+**lead_time:** Number of days before the actual arrival of the guests
 
-arrival_date_year : Year of arrival date
+**arrival_date_year :** Year of arrival date
 
-arrival_date_month : Month of month arrival date
+**arrival_date_month :** Month of month arrival date
 
-arrival_date_week_number : Week number of year for arrival date
+**arrival_date_week_number :** Week number of year for arrival date
 
-arrival_date_day_of_month : Day of arrival date
+**arrival_date_day_of_month :** Day of arrival date
 
-stays_in_weekend_nights : Number of weekend nights (Saturday or Sunday) spent at the hotel by the guests.
+**stays_in_weekend_nights :** Number of weekend nights (Saturday or Sunday) spent at the hotel by the guests.
 
-stays_in_week_nights : Number of weeknights (Monday to Friday) spent at the hotel by the guests.
+**stays_in_week_nights :** Number of weeknights (Monday to Friday) spent at the hotel by the guests.
 
-adults : Number of adults among guests
+**adults :** Number of adults among guests
 
-children : Number of children among guests
+**children :** Number of children among guests
 
-babies : Number of babies among guests
+**babies :** Number of babies among guests
 
-meal : Type of meal booked
+**meal :** Type of meal booked
 
-country : Country of guests
+**country :** Country of guests
 
-market_segment : Designation of market segment
+**market_segment :** Designation of market segment
 
-distribution_channel : Name of booking distribution channel
+**distribution_channel :** Name of booking distribution channel
 
-is_repeated_guest : If the booking was from a repeated guest (1) or not (0)
+**is_repeated_guest :** If the booking was from a repeated guest (1) or not (0)
 
-previous_cancellations : Number of previous bookings that were cancelled by the customer prior to the current booking
+**previous_cancellations :** Number of previous bookings that were cancelled by the customer prior to the current booking
 
-previous_bookings_not_canceled : Number of previous bookings not cancelled by the customer prior to the current booking
+**previous_bookings_not_canceled :** Number of previous bookings not cancelled by the customer prior to the current booking
 
-reserved_room_type : Code of room type reserved
+**reserved_room_type :** Code of room type reserved
 
-assigned_room_type : Code of room type assigned
+**assigned_room_type :** Code of room type assigned
 
-booking_changes : Number of changes/amendments made to the booking
+**booking_changes :** Number of changes/amendments made to the booking
 
-deposit_type : Type of the deposit made by the guest
+**deposit_type :** Type of the deposit made by the guest
 
-agent : ID of travel agent who made the booking
+**agent :** ID of travel agent who made the booking
 
-company : ID of the company that made the booking
+**company :** ID of the company that made the booking
 
-days_in_waiting_list : Number of days the booking was in the waiting list
+**days_in_waiting_list :** Number of days the booking was in the waiting list
 
-customer_type : Type of customer, assuming one of four categories
+**customer_type :** Type of customer, assuming one of four categories
 
-adr : Average Daily Rate, as defined by dividing the sum of all lodging transactions by the total number of staying nights
+**adr :** Average Daily Rate, as defined by dividing the sum of all lodging transactions by the total number of staying nights
 
-required_car_parking_spaces : Number of car parking spaces required by the customer
+**required_car_parking_spaces :** Number of car parking spaces required by the customer
 
-total_of_special_requests : Number of special requests made by the customer
+**total_of_special_requests :** Number of special requests made by the customer
 
-reservation_status : Reservation status (Canceled, Check-Out or No-Show)
+**reservation_status :** Reservation status (Canceled, Check-Out or No-Show)
 
-reservation_status_date : Date at which the last reservation status was updated
+**reservation_status_date :** Date at which the last reservation status was updated
 
-Check Unique Values for each variable.
-[ ]
+# Check Unique Values for each variable.
+
+```
 # Check Unique Values for each variable.
 print(hotel_booking_df.apply(lambda col: col.unique())) # We have describes unique value in all individual column.
+```
+
 hotel                                                    [Resort Hotel, City Hotel]
 is_canceled                                                                  [0, 1]
 lead_time                         [342, 737, 7, 13, 14, 0, 9, 85, 75, 23, 35, 68...
@@ -335,60 +354,81 @@ total_of_special_requests                                        [0, 1, 3, 2, 4,
 reservation_status                                   [Check-Out, Canceled, No-Show]
 reservation_status_date           [2015-07-01, 2015-07-02, 2015-07-03, 2015-05-0...
 dtype: object
-3. Data Wrangling
-[ ]
+# 3. Data Wrangling
+```
 #lets check, what is the percentage of null value in each column, starting from company
 
 percentage_company_null = miss_values[0] / uni_num_of_rows*100
 percentage_company_null
+```
 93.98256213098998
-[ ]
+```
 #to fill the NaN value in the column, let's check which colomns has null value, we have already stored the same.
 miss_values[:5]
+```
 company               82137
 agent                 12193
 country                 452
 children                  4
 reserved_room_type        0
 dtype: int64
-[ ]
+```
 # It is better to drop the column 'company' altogether since the number of missing values is extremely high compared to the number of rows.
 
 hotel_booking_df.drop(['company'], axis=1, inplace=True)
-[ ]
+```
+
+```
 # now let's check for agent
 
 percentage_agent_null = miss_values[1] / uni_num_of_rows*100
 percentage_agent_null
+```
+
 13.951439425145315
-[ ]
+
+```
 # As we have seen, there is minimul null values in agent, Lets fill these value by taking mode of the all values
 
 hotel_booking_df['agent'].fillna(value = 0, inplace = True)
 hotel_booking_df['agent'].isnull().sum() # we re-check that column has no null value
+```
+
 0
-[ ]
+
+```
 #Check the percentage null value in country col
 
 percentage_country_null = miss_values[2] / uni_num_of_rows*100
 percentage_country_null
+```
+
 0.5171861412421621
-[ ]
+
+```
 # We have less null vlues in country col, so we will replace null from 'other' as country name.
 
 hotel_booking_df['country'].fillna(value = 'others', inplace = True)
 hotel_booking_df['country'].isnull().sum() # we re-check that column has no null value
+```
+
 0
-[ ]
+
+```
 #Check the percentage null value in children col
 
 percentage_children_null = miss_values[3] / uni_num_of_rows*100
 percentage_children_null
+```
+
 0.004576868506567806
-[ ]
+
+```
 #let's check whether database having any other null value
 
 hotel_booking_df.isnull().sum() # As we have seen, no column has any null value
+```
+
 hotel                             0
 is_canceled                       0
 lead_time                         0
@@ -421,11 +461,14 @@ total_of_special_requests         0
 reservation_status                0
 reservation_status_date           0
 dtype: int64
-[ ]
+
+```
 #Change in datatype for required columns
 
 #showing the info of the data to check datatype
 hotel_booking_df.info()
+```
+
 <class 'pandas.core.frame.DataFrame'>
 Int64Index: 87396 entries, 0 to 119389
 Data columns (total 31 columns):
@@ -464,10 +507,13 @@ Data columns (total 31 columns):
  30  reservation_status_date         87396 non-null  object 
 dtypes: float64(3), int64(16), object(12)
 memory usage: 21.3+ MB
-[ ]
+
+```
 #total stay in nights
 hotel_booking_df['total_stay_in_nights'] = hotel_booking_df ['stays_in_week_nights'] + hotel_booking_df ['stays_in_weekend_nights']
 hotel_booking_df['total_stay_in_nights'] # We have created a col for total stays in nights by adding week night & weekend nights
+```
+
 0         0
 1         0
 2         1
@@ -480,10 +526,13 @@ hotel_booking_df['total_stay_in_nights'] # We have created a col for total stays
 119388    7
 119389    9
 Name: total_stay_in_nights, Length: 87396, dtype: int64
-[ ]
+
+```
 # We have created a col for revenue using total stay * adr
 hotel_booking_df['revenue'] = hotel_booking_df['total_stay_in_nights'] *hotel_booking_df['adr']
 hotel_booking_df['revenue']
+```
+
 0            0.00
 1            0.00
 2           75.00
@@ -496,16 +545,22 @@ hotel_booking_df['revenue']
 119388     730.80
 119389    1360.80
 Name: revenue, Length: 87396, dtype: float64
-[ ]
+
+```
 # Also, for information, we will add a column with total guest coming for each booking
 hotel_booking_df['total_guest'] = hotel_booking_df['adults'] + hotel_booking_df['children'] + hotel_booking_df['babies']
 hotel_booking_df['total_guest'].sum()
+```
+
 176990.0
-[ ]
+
+```
 # for understanding, from col 'is_canceled': we will replace the value from (0,1) to not_canceled, is canceled.
 
 hotel_booking_df['is_canceled'] = hotel_booking_df['is_canceled'].replace([0,1], ['not canceled', 'is canceled'])
 hotel_booking_df['is_canceled']
+```
+
 0         not canceled
 1         not canceled
 2         not canceled
@@ -518,10 +573,13 @@ hotel_booking_df['is_canceled']
 119388    not canceled
 119389    not canceled
 Name: is_canceled, Length: 87396, dtype: object
-[ ]
+
+```
 #Same for 'is_repeated_guest' col
 hotel_booking_df['is_repeated_guest'] = hotel_booking_df['is_repeated_guest'].replace([0,1], ['not repeated', 'repeated'])
 hotel_booking_df['is_repeated_guest']
+```
+
 0         not repeated
 1         not repeated
 2         not repeated
@@ -534,40 +592,45 @@ hotel_booking_df['is_repeated_guest']
 119388    not repeated
 119389    not repeated
 Name: is_repeated_guest, Length: 87396, dtype: object
-[ ]
+
+```
 #Now, we will check overall revenue hotel wise
 hotel_wise_total_revenue = hotel_booking_df.groupby('hotel')['revenue'].sum()
 hotel_wise_total_revenue
+```
+
 hotel
 City Hotel      18774101.54
 Resort Hotel    15686837.77
 Name: revenue, dtype: float64
-[ ]
+
+```
 hotel_booking_df[['hotel', "revenue"]]
+```
 
 We only made a few changes to the data.
 
-----Columns added -----
+----**Columns added** -----
 
 We have seen that a few columns are needed in the data for analytical purposes, and these columns can be evaluated.
 
-a) Number of Guests: We may assess the overall number of guests and income by using these columns. This value is obtained by summing the total number of adults, children, and infants.
+a) **Number of Guests:** We may assess the overall number of guests and income by using these columns. This value is obtained by summing the total number of adults, children, and infants.
 
-b) Income: ADR and total guests are multiplied to find revenue. This column will be used to examine each hotel's growth and profitability.
+b) **Income:** ADR and total guests are multiplied to find revenue. This column will be used to examine each hotel's growth and profitability.
 
-----Columns deleted -----
+----**Columns deleted** -----
 
-a)company: As we can see, this column almost has no data. As a result, we had to eliminate this column because it had no bearing on the analysis.
+a)**company:** As we can see, this column almost has no data. As a result, we had to eliminate this column because it had no bearing on the analysis.
 
-Replace values in columns by
+**Replace values in columns by**
 
 is cancelled, isn't cancelled, and is a repeat visitor: As we've seen, these columns only hold the value of 0,1 to indicate that the boycott is now being cancelled. These values (0,1) from "Cancelled" & "Not cancelled" are changed. The same procedure is used to change 0,1 from "Repeated" and "Not repeated" in the column "is_repeated_guest". These values will now facilitate greater comprehension during visualisation.
 
-----Changes to the values' data types in columns --
+----**Changes to the values' data types in columns** --
 
-a) Agent & Kids: We verified that these columns contain float values, which don't make sense in the data because they represent the guest count and agent ID. Therefore, we have updated the 'float' data type of these columns to 'Integer'.
+a) **Agent & Kids:** We verified that these columns contain float values, which don't make sense in the data because they represent the guest count and agent ID. Therefore, we have updated the 'float' data type of these columns to 'Integer'.
 
-----Removed duplicate entries and is_null values --
+----**Removed duplicate entries and is_null values** --
 
 a) Data wrangling must be done before any data from the data set can be visualised.
 
@@ -577,9 +640,10 @@ b) In the same, we looked to see whether there was any data duplication and disc
 
 By doing this, we have eliminated any unnecessary data.
 
-4. Data Visualisation, Storytelling, and Chart Experimental Design: Identify the relationships between variables
-Chart-1
-[ ]
+# 4. Data Visualisation, Storytelling, and Chart Experimental Design: Identify the relationships between variables
+# Chart-1
+
+```
 # Let's create a function which will give us bar chart of data respective with a col.
 def get_count_from_column_bar(df, column_label):
   df_grpd = df[column_label].value_counts()
@@ -598,7 +662,8 @@ def plot_bar_chart_from_column(df, column_label, t1):
   plt.xticks(rotation = 15) # use to format the lable of x-axis
   #plt.xlabel(column_label)f
   plt.show()
-[ ]
+```
+```
 # Chart - 1 visualization code
 
 def get_count_from_column(df, column_label):
@@ -615,120 +680,134 @@ def plot_pie_chart_from_column(df, column_label, t1, exp):
   ax.axis('equal')
   plt.legend()
   plt.show()
-[ ]
+```
+
+```
 exp1 = [0.05,0.05]
 plot_pie_chart_from_column(hotel_booking_df, 'hotel', 'Booking percentage of Hotel by Name', exp1)
+```
 
 Why did you pick the specific chart?
-To present the data that in which hotel more booking have been done.
+**To present the data that in which hotel more booking have been done.**
 
 What is/are the insight(s) found from the chart?
-Here, we found that the booking number is Higher in City Hotel which is 61.12% than Resort Hotel which is 38.87%. Hence we can say that City hotel has more consumption
+**Here, we found that the booking number is Higher in City Hotel which is 61.12% than Resort Hotel which is 38.87%. Hence we can say that City hotel has more consumption**
 
 Will the gained insights help creating a positive business impact? Are there any insights that lead to negative growth? Justify with specific reason.
-Yes, for both Hotels, this data making some positive business impact : -
+**Yes, for both Hotels, this data making some positive business impact : -**
 
-City Hotel :- Provided more services to attract more guest to increase more revenue.
+**City Hotel :- Provided more services to attract more guest to increase more revenue.**
 
-Resort Hotel :- Find solution to attract guest and find what city hotel did to attract guest.
+**Resort Hotel :- Find solution to attract guest and find what city hotel did to attract guest.**
 
-Chart - 2
-[ ]
+# Chart - 2
+
+```
 # Chart - 2 visualization code
 exp4 = [0,0.1]
 plot_pie_chart_from_column(hotel_booking_df, 'is_canceled', 'Cancellation volume of Hotel', exp4)
+```
 
 Why did you pick the specific chart?
-In this chart, we presented the cancellation rate of the hotels booking
+**In this chart, we presented the cancellation rate of the hotels booking**
 
 What is/are the insight(s) found from the chart?
-Here, we found that overall more than 25% of booking got cancelled
+**Here, we found that overall more than 25% of booking got cancelled**
 
 Will the gained insights help creating a positive business impact? Are there any insights that lead to negative growth? Justify with specific reason.
-Here, we can see, that more than 27% booking getting cancelled.
+**Here, we can see, that more than 27% booking getting cancelled.**
 
-Solution: We can check the reason of cancellation of a booking & need to get this sort on business level
+**Solution: We can check the reason of cancellation of a booking & need to get this sort on business level**
 
-Chart 3
-[ ]
+# Chart 3
+
+```
 # Chart - 3 visualization code
 plot_bar_chart_from_column(hotel_booking_df, 'distribution_channel', 'Distibution Channel Volume')
+```
 
 Why did you pick the specific chart?
-The following chart represent maximum volume of booking done through which channel to represnt the numbers in descending order we chose bar graph
+**The following chart represent maximum volume of booking done through which channel to represnt the numbers in descending order we chose bar graph**
 
 What is/are the insight(s) found from the chart?
-As clearly seen TA/TO(Tour of Agent & Tour of operator) is highest, recommending to continue booking through TA/TO
+**As clearly seen TA/TO(Tour of Agent & Tour of operator) is highest, recommending to continue booking through TA/TO**
 
 Will the gained insights help creating a positive business impact? Are there any insights that lead to negative growth? Justify with specific reason.
-Yes this shows positive business impact.
+**Yes this shows positive business impact.**
 
-Higher the number of TA/TO will help to increase the revenue generation of Hotel.
+**Higher the number of TA/TO will help to increase the revenue generation of Hotel.**
 
-Chart -4
-[ ]
+# Chart -4
+
+```
 # Chart - 4 visualization code
 exp2 = [0.2, 0,0,0,0,0,0,0,0,0,0,0]
 plot_pie_chart_from_column(hotel_booking_df, 'arrival_date_month', 'Month-wise booking', exp2)
+```
 
 Why did you pick the specific chart?
-To show the percentage share of booking in each month,on overall level
+**To show the percentage share of booking in each month,on overall level**
 
 What is/are the insight(s) found from the chart?
-The above percentage shows month May, July and Aug are the highest booking months due to holiday season. Recommending aggressive advertisement to lure more and more customers.
+**The above percentage shows month May, July and Aug are the highest booking months due to holiday season. Recommending aggressive advertisement to lure more and more customers.**
 
 Will the gained insights help creating a positive business impact? Are there any insights that lead to negative growth? Justify with specific reason.
-Yes, with increased volume of visitors will help hotel to manage revenue in down time, will also help employee satisfaction and retention.
+**Yes, with increased volume of visitors will help hotel to manage revenue in down time, will also help employee satisfaction and retention.**
 
-Chart-5
-[ ]
+# Chart-5
+```
 # Chart - 5 visualization code
 exp3 = [0,0.2]
 plot_pie_chart_from_column(hotel_booking_df, 'is_repeated_guest', 'Guest repeating status', exp3)
+```
 
 Why did you pick the specific chart?
-To show the percentage share of repeated & non-repeated guests.
+**To show the percentage share of repeated & non-repeated guests.**
 
 What is/are the insight(s) found from the chart?
-Here, we can see that the number of repeated guests is very less as compared to overall guests
+**Here, we can see that the number of repeated guests is very less as compared to overall guests**
 
 Will the gained insights help creating a positive business impact? Are there any insights that lead to negative growth? Justify with specific reason.
-We can give alluring offers to non-repetitive customers during Off seasons to enhance revenue
+**We can give alluring offers to non-repetitive customers during Off seasons to enhance revenue**
 
-Chart-6
-[ ]
+# Chart-6
+
+```
 # Chart - 6 visualization code
 plot_bar_chart_from_column(hotel_booking_df, 'assigned_room_type', 'Assigment of room by type')
+```
 
 Why did you pick the specific chart?
-To show distribution by volume, which room is alotted.
+**To show distribution by volume, which room is alotted.**
 
 What is/are the insight(s) found from the chart?
-This chart shows room type 'A' is most prefered by guest.
+**This chart shows room type 'A' is most prefered by guest.**
 
 Will the gained insights help creating a positive business impact? Are there any insights that lead to negative growth? Justify with specific reason.
-Yes, Positive impact because 'A','D','E' is more prefered by guest due to better services offered in room type.
+**Yes, Positive impact because 'A','D','E' is more prefered by guest due to better services offered in room type.**
 
-Chart-7
-[ ]
+# Chart-7
+```
 market_segment_df = pd.DataFrame(hotel_booking_df['market_segment'])
 market_segment_df_data = market_segment_df.groupby('market_segment')['market_segment'].count()
 market_segment_df_data.sort_values(ascending = False, inplace = True)
 plt.figure(figsize=(15,6))
 y = np.array([4,5,6])
 market_segment_df_data.plot(kind = 'bar', color=['r', 'g', 'y', 'b', 'pink', 'black', 'brown'], fontsize = 20,legend='True')
+```
 
 Why did you pick the specific chart?
-In this chart, we have seen market segment by which hotel has booked
+**In this chart, we have seen market segment by which hotel has booked**
 
 What is/are the insight(s) found from the chart?
-Online TA has been used most frequently to book hotel by the guest.
+**Online TA has been used most frequently to book hotel by the guest.**
 
 Will the gained insights help creating a positive business impact? Are there any insights that lead to negative growth? Justify with specific reason.
-Yes, it is creating positive business impact that guests are using Online TA market segment as most prefered to book hotels.
+**Yes, it is creating positive business impact that guests are using Online TA market segment as most prefered to book hotels.**
 
-Chart-8
-[ ]
+# Chart-8
+
+```
 # Chart - 8 visualization code
 guest_country_wise = pd.DataFrame(hotel_booking_df[['country','total_guest']])
 guest_country_wise_df = guest_country_wise.groupby(['country'])['total_guest'].sum()
@@ -738,19 +817,21 @@ top_10_country_by_guest = guest_country_wise_df.head(10)
 plt.figure(figsize=(12,6))
 sns.barplot(x=top_10_country_by_guest.index, y=top_10_country_by_guest).set(title='Top 10 Countries by Guest')
 print("\n\nPRT = Portugal\nGBR = Great Britain & Northern Ireland\nFRA = France\nESP = Spain\nDEU = Germany\nITA = Italy\nIRL = Ireland\nBRA = Brazil\nBEL = Belgium\nNLD = Netherland")
+```
 
 1 Why did you choose the particular chart? We have observed that the majority of visitors come from which countries.
 
-A chart of the top 10 nations is displayed.
+**A chart of the top 10 nations is displayed.**
 
 2. What insight(s) were discovered from the chart? As we can see, the majority of the visitors are from Portugal.
 
 3 Will the learned insights assist to a favorable commercial impact? Exist any insights that result in a decline in growth? Provide a specific justification.
 
-To increase the number of customers, we can increase our marketing efforts and provide enticing deals to visitors from Portugal.
+**To increase the number of customers, we can increase our marketing efforts and provide enticing deals to visitors from Portugal.**
 
-Chart-9
-[ ]
+# Chart-9
+
+```
 average_adr = hotel_booking_df.groupby('hotel')['adr'].mean()
 average_adr
 plt.subplots(figsize=(8, 5))
@@ -758,6 +839,7 @@ average_adr.plot(kind = 'barh', color = ('g', 'r'))
 plt.xlabel("Average ADR", fontdict={'fontsize': 12, 'fontweight' : 5, 'color' : 'brown'})
 plt.ylabel("Hotel Name", fontdict={'fontsize': 12, 'fontweight' : 5, 'color' : 'Brown'} )
 plt.title("Average ADR of Hotel", fontdict={'fontsize': 12, 'fontweight' : 5, 'color' : 'Green'} )
+```
 
 This code calculates the total revenue generated by each hotel in the DataFrame hotel_booking_df and creates a bar plot to visualize and compare the revenue for different hotels.
 
@@ -793,8 +875,9 @@ The show() function from matplotlib is called to display the bar plot on the scr
 
 The resulting bar plot will have hotel names on the x-axis and the corresponding total revenue values on the y-axis. The bars will be colored black and green to differentiate the revenue values for different hotels.
 
-Chart-10
-[ ]
+# Chart-10
+
+```
 plt.figure(figsize = (8,5))
 hotel_wise_revenue = hotel_booking_df.groupby('hotel')['revenue'].sum()
 hotel_wise_revenue
@@ -802,67 +885,73 @@ ax = hotel_wise_revenue.plot(kind = 'bar', color = ('black', 'green'))
 plt.xlabel("Hotel", fontdict={'fontsize': 12, 'fontweight' : 5, 'color' : 'Brown'})
 plt.ylabel("Total Revenue", fontdict={'fontsize': 12, 'fontweight' : 5, 'color' : 'Brown'} )
 plt.title("Total Revenue", fontdict={'fontsize': 12, 'fontweight' : 5, 'color' : 'Green'} )
+```
 
-1.Why did you choose the particular chart?
+**1.Why did you choose the particular chart?**
 
 To provide the two hotels' average ADRs
 
-2.What insight(s) were discovered from the chart?
+**2.What insight(s) were discovered from the chart?**
 
 The average ADR of a city hotel is higher than a resort hotel, hence the city hotel will generate more profit and income.
 
-3.Will the learned insights contribute to a favourable commercial impact? Exist any insights that result in a decline in growth? Provide a specific justification.
+**3.Will the learned insights contribute to a favourable commercial impact? Exist any insights that result in a decline in growth? Provide a specific justification.**
 
 Here, we can promote the City Hotel more to draw in more guests and increase revenue.
 
-Chart-11
-[ ]
+## Chart-11
+
+```
 # Chart - 10 visualization code
 plt.figure(figsize = (12,6))
 sns.scatterplot(y = 'total_stay_in_nights', x = 'adr', data = hotel_booking_df[hotel_booking_df['adr'] < 1000])
 plt.show() #
-
-1.Why did you choose the particular chart?
+```
+**1.Why did you choose the particular chart?**
 
 To compare and illustrate how total stay days compare to ADR
 
-2.What insight(s) were discovered from the chart?
+**2.What insight(s) were discovered from the chart?**
 
 Here, we discovered that if guest stay days are decreasing, ADR is increasing.
 
-Chart-12
-[ ]
-# Chart - 11 visualization code
+# Chart-12
+
+```
+# Chart - 12 visualization code
 plt.figure(figsize = (12,10), dpi = 100)
 hotel_wise_meal = hotel_booking_df.groupby(['hotel', 'meal'])['meal'].count().unstack()
 hotel_wise_meal.plot(kind ='bar', figsize = (12,8))
 hotel_wise_meal
+```
 
-1.Why did you choose the particular chart?
+**1.Why did you choose the particular chart?**
 
 To display the visitor's preferred dining experience hotel-wise
 
-2.What insight(s) were discovered from the chart?
+**2.What insight(s) were discovered from the chart?**
 
-As you can see, guests at both hotels prefer the BB (Bed & Breakfast) meal. In order to increase customer retention and draw in new customers, the hotel can serve more delicious meals during this dinner.
+**As you can see, guests at both hotels prefer the BB (Bed & Breakfast) meal. In order to increase customer retention and draw in new customers, the hotel can serve more delicious meals during this dinner.**
 
-Chart - 13 - Correlation Heatmap
-[ ]
+# Chart - 13 - Correlation Heatmap
+
+```
 # Correlation Heatmap visualization code
 corr_df = hotel_booking_df[['lead_time','previous_cancellations', 'previous_bookings_not_canceled', 'total_guest',
                     'booking_changes', 'days_in_waiting_list', 'adr', 'required_car_parking_spaces', 'total_of_special_requests']].corr()
 f, ax = plt.subplots(figsize=(12, 12))
 sns.heatmap(corr_df, annot = True, fmt='.2f', annot_kws={'size': 10},  vmax=1, square=True, cmap="YlGnBu")
+```
 
-1.Why did you choose the particular chart?
+**1.Why did you choose the particular chart?**
 
 To comprehend the relationships among various numerical quantities
 
-2.What insight(s) were discovered from the chart?
+**2.What insight(s) were discovered from the chart?**
 
 The axis's highest corelation value is 39% positive and its lowest correlation value is -9% negative.
 
-5. The answer to the business objective
+# 5. The answer to the business objective
 The following business aim was met :
 
 In order for the hotel industry to prosper, a few factors must be taken into account, including high revenue generation, customer happiness, and employee retention.
@@ -879,7 +968,7 @@ We can display the visitor arrivals trend at client venues, allowing clients to 
 
 In order for the percentages underneath those numbers to be improved by a variety of mediums, we were also able to correlate the values indicating the maximum and minimum % between them.
 
-Conclusion :-
+# Conclusion :-
 City Hotel generates greater income and profit and appears to be more popular among travellers.
 
 Compared to the other months, the majority of reservations are made in July and August.
@@ -902,4 +991,4 @@ Corporate has the most percentage of repeated guests while TA/TO has the least w
 
 The length of the stay decreases as ADR increases probably to reduce the cost.
 
-Hurrah! You achieved your EDA Capstone Project successfully!!!
+### Hurrah! You achieved your EDA Capstone Project successfully!!!
