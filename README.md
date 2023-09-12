@@ -55,14 +55,15 @@ M - Multivariate Analysis ]
 Import Libraries
 
 [ ]
-
-`import numpy as np`
-`import pandas as pd`
-`import matplotlib.pyplot as plt`
-`%matplotlib inline`
-`from datetime import datetime`
-`import seaborn as sns`
-`import ast`
+```
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+%matplotlib inline
+from datetime import datetime
+import seaborn as sns
+import ast
+```
 [ ]
 from google.colab import drive
 drive.mount('/content/drive')
