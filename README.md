@@ -54,7 +54,7 @@ M - Multivariate Analysis ]
 # 1. Know Your Data
 Import Libraries
 
-[ ]
+
 ```
 import numpy as np
 import pandas as pd
@@ -64,25 +64,32 @@ from datetime import datetime
 import seaborn as sns
 import ast
 ```
-[ ]
+
+```
 from google.colab import drive
 drive.mount('/content/drive')
+```
 Mounted at /content/drive
-[ ]
+
+```
 # Load Dataset
 database = "/content/drive/MyDrive/Colab Notebooks/Module 1/Hotel Bookings.csv"
 hotel_booking_df = pd.read_csv(database)
-First Dataset details
-[ ]
+```
+# First Dataset details
+```
 # Dataset First Look
 hotel_booking_df
+```
 
-Dataset Rows & Columns count
-[ ]
+# Dataset Rows & Columns count
+```
 # Dataset Rows & Columns count
 print(hotel_booking_df.index)
 print('\n \n')
 print(hotel_booking_df.columns)
+```
+
 RangeIndex(start=0, stop=119390, step=1)
 
  
