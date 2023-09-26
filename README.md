@@ -9,8 +9,6 @@ We must first perform data manipulation before visualizing any data from the dat
 
 To achieve greater understanding and business goals, many charts are utilized for data visualization.
 
-# GitHub Link -
-
 # Problem Declaration
 
 Have you ever thought the ideal season of the year to reserve a hotel room? Alternatively, how long should I remain to get the greatest daily rate? What if you wanted to foretell whether a hotel would unreasonably frequently receive unusual requests? You can investigate those questions using the data from hotel reservations! This data collection comprises reservation details for a city hotel and a resort hotel, as well as details like the date the reservation was made, the duration of the stay, the number of adults, kids, and/or babies, and the number of parking spaces that are available. The data is devoid of any information that may be used to identify a specific person. Investigate and evaluate the information to find crucial elements that control reservations.
